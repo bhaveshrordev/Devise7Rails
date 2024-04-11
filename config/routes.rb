@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   devise_for :users
   get 'static_pages/landing_page'
   get 'static_pages/dashboard'
