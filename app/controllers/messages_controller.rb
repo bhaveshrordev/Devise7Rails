@@ -1,9 +1,27 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: %i[ show edit update destroy ]
+  before_action :set_message, only: %i[ show edit update destroy upvote downvote ]
 
   # GET /messages or /messages.json
   def index
     @messages = Message.all
+  end
+
+  def upvote
+    if current_user.voted_up_on? @message
+      @message.unvote_by current_user
+    else
+      @message.upvote_by current_user
+    end
+    redirect_to @message
+  end
+
+  def downvote
+    if current_user.voted_down_on? @message
+      @message.unvote_by current_user
+    else
+      @message.downvote_by current_user
+    end
+    redirect_to @message
   end
 
   # GET /messages/1 or /messages/1.json

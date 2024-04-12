@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  resources :messages
+  resources :messages do 
+    member do
+      patch :upvote
+      patch :downvote
+    end 
+  end
+
+
   devise_for :users
   get 'static_pages/landing_page'
   get 'static_pages/dashboard'
