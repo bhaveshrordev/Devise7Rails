@@ -8,7 +8,8 @@
   <%= message.votes_for.up.size %>
   Downvotes:
   <%= message.votes_for.down.size %>
-  <%= button_to "Upvote", upvote_message_path(message), method: :patch %>  
+  <%= button_to "Upvote", upvote_message_path(message), method: :patch %>
+  <%= button_to "Upvote & Redirect", upvote_message_path(message, format: :html), method: :patch %>  
   <%= button_to "Downvote", downvote_message_path(message), method: :patch %>
 
 </div>

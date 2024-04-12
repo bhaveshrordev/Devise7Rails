@@ -12,7 +12,14 @@ class MessagesController < ApplicationController
     else
       @message.upvote_by current_user
     end
-    redirect_to @message
+    respond_to do |format|
+      format.html do
+        redirect_to @message
+      end
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(@message, partial: "messages/message", locals: { message: @message })
+      end
+    end
   end
 
   def downvote
@@ -21,7 +28,14 @@ class MessagesController < ApplicationController
     else
       @message.downvote_by current_user
     end
-    redirect_to @message
+    respond_to do |format|
+      format.html do
+        redirect_to @message
+      end
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(@message, partial: "messages/message", locals: { message: @message })
+      end
+    end
   end
 
   # GET /messages/1 or /messages/1.json
