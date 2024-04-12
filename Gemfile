@@ -74,3 +74,5 @@ end
 gem 'devise', github: 'heartcombo/devise', branch: 'main'
 
 gem "faker", "~> 3.3"
+
+gem "acts_as_votable", "~> 0.14.0"
