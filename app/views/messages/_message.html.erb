@@ -5,26 +5,16 @@
   </p>
 
   <hr>
-  cached_votes_total: <%= message.cached_votes_total %>
-  <br>
-  cached_votes_score: <%= message.cached_votes_score %>
-  <br>
-  cached_votes_up: <%= message.cached_votes_up %>
-  <br>
-  cached_votes_down: <%= message.cached_votes_down %>
-  <br>
-  cached_weighted_score: <%= message.cached_weighted_score %>
-  <br>
-  cached_weighted_total: <%= message.cached_weighted_total %>
-  <br>
-  cached_weighted_average: <%= message.cached_weighted_average %>
-  <br>
+    upvotes: <%= message.cached_votes_up %>
+    <br>
+    downvotes: <%= message.cached_votes_down %>
+    <br>
+    score: <%= message.cached_weighted_score %>
+    <br>
+    total_votes: <%= message.cached_weighted_total %>
+    <br>
   <hr>
 
-  Upvotes:
-  <%= message.votes_for.up.size %>
-  Downvotes:
-  <%= message.votes_for.down.size %>
   <%= button_to "Upvote", upvote_message_path(message), method: :patch %>
   <%= button_to "Upvote & Redirect", upvote_message_path(message, format: :html), method: :patch %>  
   <%= button_to "Downvote", downvote_message_path(message), method: :patch %>
