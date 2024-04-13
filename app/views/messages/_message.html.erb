@@ -15,8 +15,8 @@
     <br>
   <hr>
 
-  <%= button_to "Upvote", upvote_message_path(message), method: :patch %>
+  <%= button_to upvote_label(message, current_user), upvote_message_path(message), method: :patch %>
   <%= button_to "Upvote & Redirect", upvote_message_path(message, format: :html), method: :patch %>  
-  <%= button_to "Downvote", downvote_message_path(message), method: :patch %>
+  <%= button_to downvote_label(message, current_user), downvote_message_path(message), method: :patch %>
 
 </div>
