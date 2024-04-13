@@ -23,4 +23,16 @@ module MessagesHelper
     end
   end
 
+  def upvote_label_styles(message, user)
+    if user.voted_up_on? message
+      "background-color: grey;"
+    end
+  end
+
+  def downvote_label_styles(message, user)
+    if user.voted_down_on? message
+      "background-color: grey;"
+    end
+  end
+
 end
