@@ -1,17 +1,34 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: %i[ show edit update destroy upvote downvote ]
+  before_action :set_message, only: %i[ show edit update destroy upvote downvote vote ]
 
   # GET /messages or /messages.json
   def index
     @messages = Message.all
   end
 
-  def upvote
-    if current_user.voted_up_on? @message
-      @message.unvote_by current_user
+  def vote
+    case params[:type]
+    when 'upvote'
+      @message.upvote!(current_user)
+    when 'downvote'
+      @message.downvote!(current_user)
     else
-      @message.upvote_by current_user
+      return redirect_to request.url, alert: "no such type"
     end
+
+    respond_to do |format|
+      format.html do
+        redirect_to @message
+      end
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(@message, partial: "messages/message", locals: { message: @message })
+      end
+    end
+  end
+
+  def upvote
+    @message.upvote!(current_user)
+
     respond_to do |format|
       format.html do
         redirect_to @message
@@ -23,11 +40,8 @@ class MessagesController < ApplicationController
   end
 
   def downvote
-    if current_user.voted_down_on? @message
-      @message.unvote_by current_user
-    else
-      @message.downvote_by current_user
-    end
+    @message.downvote!(current_user)
+
     respond_to do |format|
       format.html do
         redirect_to @message
