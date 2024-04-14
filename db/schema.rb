@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_14_151030) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_14_151516) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_14_151030) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cached_scoped_like_votes_total", default: 0
+    t.integer "cached_scoped_like_votes_score", default: 0
+    t.integer "cached_scoped_like_votes_up", default: 0
+    t.integer "cached_scoped_like_votes_down", default: 0
+    t.integer "cached_weighted_like_score", default: 0
+    t.integer "cached_weighted_like_total", default: 0
+    t.float "cached_weighted_like_average", default: 0.0
+    t.integer "cached_scoped_bookmark_votes_total", default: 0
+    t.integer "cached_scoped_bookmark_votes_score", default: 0
+    t.integer "cached_scoped_bookmark_votes_up", default: 0
+    t.integer "cached_scoped_bookmark_votes_down", default: 0
+    t.integer "cached_weighted_bookmark_score", default: 0
+    t.integer "cached_weighted_bookmark_total", default: 0
+    t.float "cached_weighted_bookmark_average", default: 0.0
   end
 
   create_table "users", force: :cascade do |t|

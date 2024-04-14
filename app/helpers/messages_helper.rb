@@ -8,7 +8,7 @@ module MessagesHelper
                   end
 
     tag.span do
-      "#{message.cached_votes_up} #{label_text}"
+      "#{message.cached_scoped_like_votes_up} #{label_text}"
     end
   end
 
@@ -19,7 +19,7 @@ module MessagesHelper
                     "DOWNvote"
                   end
     tag.span do
-      "#{message.cached_votes_down} #{label_text}"
+      "#{message.cached_scoped_like_votes_down} #{label_text}"
     end
   end
 
