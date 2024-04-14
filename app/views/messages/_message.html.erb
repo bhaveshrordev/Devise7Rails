@@ -23,4 +23,14 @@
   <%= button_to upvote_label(message, current_user), vote_message_path(message, type: :upvote), method: :patch, style: upvote_label_styles(message, current_user) %>
   <%= button_to downvote_label(message, current_user), vote_message_path(message, type: :downvote), method: :patch, style: downvote_label_styles(message, current_user) %>
 
+
+  <% if current_user.voted_up_on? message, vote_scope: "bookmark" %>
+    "BookMarked"
+  <% else %>
+    "Not BookMarked"
+  <% end %>
+
+  <%= button_to "BookMark", bookmark_message_path(message), method: :patch %>
+
+
 </div>

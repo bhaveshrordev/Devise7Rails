@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       patch :upvote
       patch :downvote
       patch :vote
+      patch :bookmark
     end 
   end
 
