@@ -26,31 +26,31 @@ class MessagesController < ApplicationController
     end
   end
 
-  def upvote
-    @message.upvote!(current_user)
+  # def upvote
+  #   @message.upvote!(current_user)
 
-    respond_to do |format|
-      format.html do
-        redirect_to @message
-      end
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.replace(@message, partial: "messages/message", locals: { message: @message })
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     format.html do
+  #       redirect_to @message
+  #     end
+  #     format.turbo_stream do
+  #       render turbo_stream: turbo_stream.replace(@message, partial: "messages/message", locals: { message: @message })
+  #     end
+  #   end
+  # end
 
-  def downvote
-    @message.downvote!(current_user)
+  # def downvote
+  #   @message.downvote!(current_user)
 
-    respond_to do |format|
-      format.html do
-        redirect_to @message
-      end
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.replace(@message, partial: "messages/message", locals: { message: @message })
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     format.html do
+  #       redirect_to @message
+  #     end
+  #     format.turbo_stream do
+  #       render turbo_stream: turbo_stream.replace(@message, partial: "messages/message", locals: { message: @message })
+  #     end
+  #   end
+  # end
 
   # GET /messages/1 or /messages/1.json
   def show
