@@ -51,6 +51,12 @@
       <li><em>landing_page:</em> Renders the landing page.</li>
       <li><em>dashboard:</em> Renders the dashboard page.</li>
     </ul>
+    <li><strong>MessageController:</strong> Can create new messages.</li>
+    <ul>
+      <li><em>vote:</em> Logged in User can Upvote or Downvote on a message.</li>
+      <li><em>bookmark:</em> Logged in User can Bookmark a message.</li>
+    </ul>
+  
   </ul>
 
   <h2>Views</h2>
@@ -63,4 +69,5 @@
 
   <h2>Models</h2>
   <p>The application uses the Devise gem for user authentication. It includes a default User model provided by Devise.</p>
+  <p>The application also uses acts_as_votable gem on Message Model to manage upvote, downvote and bookmark functionality.</p>
 </html>
