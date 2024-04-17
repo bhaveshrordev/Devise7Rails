@@ -3,7 +3,6 @@ class MessagesController < ApplicationController
 
   # GET /messages or /messages.json
   def index
-    # @messages = Message.all
     @messages = Message.order(cached_weighted_like_score: :desc)
   end
 
