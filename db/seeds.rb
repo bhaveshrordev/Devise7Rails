@@ -9,3 +9,8 @@
 10.times do
   Message.create(body: Faker::Books::Dune.quote)
 end
+
+5.times do
+  Customer.create(email: Faker::Internet.email(domain: 'tester.com'), name: Faker::Name.name, role: 'retailer')
+  Customer.create(email: Faker::Internet.email(domain: 'tester.com'), name: Faker::Name.name, role: 'wholesaler')
+end
